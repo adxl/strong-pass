@@ -1,42 +1,38 @@
 package com.adxl.strongpass;
 
 import jdk.nashorn.internal.runtime.JSONFunctions;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
+@CrossOrigin
 public class SpController
 {
 
     Random r=new Random();
 
-    @GetMapping("/")
-    public String getPassword()
-    {
-        System.out.println(generateAlphaString(100));
-        System.out.println(generateAlphaNumString(100));
-        System.out.println(generateAlphaStringWithSymbols(100));
-        System.out.println(generateAlphaNumStringWithSymbols(100));
-        return "";
-    }
-
     @PostMapping("/generate")
-    public String generatePassword(@RequestBody Request request)
+    public ResponseEntity<String> generatePassword(@RequestBody Request request)
     {
+        System.out.println(request);
+
+        String result;
         int length=request.getLength();
 
         if (!request.hasNumbers() && !request.hasSymbols())
-            return generateAlphaString(length);
-        if (!request.hasNumbers() && request.hasSymbols())
-            return generateAlphaStringWithSymbols(length);
-        if (request.hasNumbers() && !request.hasSymbols())
-            return generateAlphaNumString(length);
+            result= generateAlphaString(length);
+        else if (!request.hasNumbers() && request.hasSymbols())
+            result= generateAlphaStringWithSymbols(length);
+        else if (request.hasNumbers() && !request.hasSymbols())
+            result= generateAlphaNumString(length);
         else
-            return generateAlphaNumStringWithSymbols(length);
+            result= generateAlphaNumStringWithSymbols(length);
+
+        return ResponseEntity.ok().body("{\"result\":\""+result+"\"}");
     }
 
     private String generateAlphaString(int length)

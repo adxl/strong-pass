@@ -27,4 +27,14 @@ public class Request
     {
         return symbols;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Request{"+
+                "length="+length+
+                ", numbers="+numbers+
+                ", symbols="+symbols+
+                '}';
+    }
 }
