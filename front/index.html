@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Password Generator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div ng-app="strong-pass" ng-controller="spController as sp">
+        <h1>Password Generator</h1>
+        <form>
+            
+            <p>Include numbers<input type="checkbox" ng-model="sp.numbers"/></p>
+            <p>Include symbols<input type="checkbox" ng-model="sp.symbols"/></p>
+            
+            <button ng-click="sp.showStates(1,sp.numbers,sp.symbols)">Generate password</button>
+        </form>
+    </div>
+</body>
+</html>
