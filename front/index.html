@@ -11,10 +11,13 @@
         <h1>Password Generator</h1>
         <form>
             
+            <p>Length<input type="number" min=8 ng-model="sp.length"/></p>
             <p>Include numbers<input type="checkbox" ng-model="sp.numbers"/></p>
             <p>Include symbols<input type="checkbox" ng-model="sp.symbols"/></p>
             
-            <button ng-click="sp.showStates(1,sp.numbers,sp.symbols)">Generate password</button>
+            <button ng-click="sp.showStates(sp.length,sp.numbers,sp.symbols)">Generate password</button>
+
+            <input type="text" ng-model="result">
         </form>
     </div>
 </body>
