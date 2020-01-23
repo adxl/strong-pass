@@ -16,6 +16,10 @@ public class SpController
     @GetMapping("/")
     public String getPassword()
     {
+        for (int i=0; i<100; i++)
+        {
+            System.out.print(generateOneSymbol());
+        }
         return generateAlphaNumString(100);
     }
 
@@ -43,6 +47,12 @@ public class SpController
         return string.toString();
     }
 
+    private char generateOneSymbol()
+    {
+        char[] symbols = {'#','@','$','%','*','+','-','?','!'};
+        return symbols[(r.nextInt(symbols.length))];
+    }
+
     private char generateOneLetter()
     {
         if (r.nextBoolean())
@@ -54,5 +64,7 @@ public class SpController
     {
         return Character.forDigit((r.nextInt(9)+1), 10);
     }
+
+
 
 }
