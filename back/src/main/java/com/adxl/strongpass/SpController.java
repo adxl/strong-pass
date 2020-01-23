@@ -3,6 +3,7 @@ package com.adxl.strongpass;
 import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
@@ -16,13 +17,12 @@ public class SpController
     @GetMapping("/")
     public String getPassword()
     {
-        for (int i=0; i<100; i++)
-        {
-            System.out.print(generateOneSymbol());
-        }
-        return generateAlphaNumString(100);
+        System.out.println(generateAlphaString(100));
+        System.out.println(generateAlphaNumString(100));
+        System.out.println(generateAlphaStringWithSymbols(100));
+        System.out.println(generateAlphaNumStringWithSymbols(100));
+        return "";
     }
-
 
     private String generateAlphaString(int length)
     {
@@ -31,6 +31,21 @@ public class SpController
         {
             string.append(generateOneLetter());
         } while (string.length()<length);
+
+        return string.toString();
+    }
+
+    private String generateAlphaStringWithSymbols(int length)
+    {
+        StringBuilder string=new StringBuilder();
+        do
+        {
+            if (r.nextBoolean())
+                string.append(generateOneSymbol());
+            else
+                string.append(generateOneLetter());
+        } while (string.length()<length);
+
         return string.toString();
     }
 
@@ -44,12 +59,28 @@ public class SpController
             else
                 string.append(generateOneDigit());
         } while (string.length()<length);
+
+        return string.toString();
+    }
+
+    private String generateAlphaNumStringWithSymbols(int length)
+    {
+        StringBuilder string=new StringBuilder();
+        do
+        {
+            if (r.nextBoolean())
+                string.append(generateOneLetter());
+            else string.append(generateOneDigit());
+            if (r.nextBoolean())
+                string.append(generateOneSymbol());
+        } while (string.length()<length);
+
         return string.toString();
     }
 
     private char generateOneSymbol()
     {
-        char[] symbols = {'#','@','$','%','*','+','-','?','!'};
+        char[] symbols={'#', '@', '$', '%', '*', '+', '-', '?', '!'};
         return symbols[(r.nextInt(symbols.length))];
     }
 
@@ -64,7 +95,6 @@ public class SpController
     {
         return Character.forDigit((r.nextInt(9)+1), 10);
     }
-
 
 
 }
