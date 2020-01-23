@@ -24,6 +24,21 @@ public class SpController
         return "";
     }
 
+    @PostMapping("/generate")
+    public String generatePassword(@RequestBody Request request)
+    {
+        int length=request.getLength();
+
+        if (!request.hasNumbers() && !request.hasSymbols())
+            return generateAlphaString(length);
+        if (!request.hasNumbers() && request.hasSymbols())
+            return generateAlphaStringWithSymbols(length);
+        if (request.hasNumbers() && !request.hasSymbols())
+            return generateAlphaNumString(length);
+        else
+            return generateAlphaNumStringWithSymbols(length);
+    }
+
     private String generateAlphaString(int length)
     {
         StringBuilder string=new StringBuilder();
