@@ -17,8 +17,7 @@ public class SpController
     @PostMapping("/generate")
     public ResponseEntity<Map<String,String>> generatePassword(@RequestBody Request request)
     {
-        System.out.println(request);
-
+        //System.out.println(request);
         String result;
         int length=request.getLength();
 
