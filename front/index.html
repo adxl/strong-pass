@@ -1,24 +1,54 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <title>Password Generator</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
-    <script src="app.js"></script>
+  <meta charset="UTF-8" />
+  <title>Password Generator</title>
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="app.js"></script>
 </head>
 
-<body>
-    <div ng-app="strong-pass" ng-controller="spController as sp">
-        <h1>Password Generator</h1>
-        <form>
-            
-            <p>Length<input type="number" min=8 ng-model="sp.length"/></p>
-            <p>Include numbers<input type="checkbox" ng-model="sp.numbers"/></p>
-            <p>Include symbols<input type="checkbox" ng-model="sp.symbols"/></p>
-            
-            <button ng-click="sp.showStates(sp.length,sp.numbers,sp.symbols)">Generate password</button>
+<body ng-app="strong-pass" ng-controller="spController as sp">
+  <div>
+    <h1>Password Generator</h1>
+    <hr />
+    <div id="formContainer">
+      <form>
 
-            <input type="text" ng-model="result">
-        </form>
+
+        <table>
+          <tr>
+            <td>
+              <p>Password length</p>
+            </td>
+            <td><input type="number" min="8" max="1024" id="length" ng-model="sp.length"></td>
+          </tr>
+
+          <tr>
+            <td>
+              <p>Include numbers</p>
+            </td>
+            <td><input type="checkbox" ng-model="sp.numbers" /></td>
+          </tr>
+          <tr>
+            <td>
+              <p>Include symbols</p>
+            </td>
+            <td><input type="checkbox" ng-model="sp.symbols" /></td>
+          </tr>
+        </table>
+
+        <div id="generateDiv">
+          <button ng-click="sp.showStates(sp.length,sp.numbers,sp.symbols)">
+            GET PASSWORD
+          </button><br>
+        </div>
+
+        <input type="text" id="result" ng-model="result" readonly />
+      </form>
     </div>
+  </div>
 </body>
+
 </html>

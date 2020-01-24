@@ -1,0 +1,59 @@
+body {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+#formContainer {
+    display: inline-block;
+    text-align: center;
+}
+
+table{
+    margin-top: 10px;
+}
+
+tr {
+    height: 40px;
+}
+
+td{
+    width: 50%;
+}
+
+td:first-child p
+{
+    float: right;
+}
+
+td:last-child input
+{
+    float: left;
+}
+
+#length {
+    color: #343a40;
+    width: 40%;
+}
+
+#generateDiv
+{
+    margin: 5% 0;
+}
+
+#generateDiv button
+{
+    color: white;
+    background-color: #d25723;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#result {
+    cursor:not-allowed;
+    text-align: center;
+    font-size: xx-large;
+  }
+  
