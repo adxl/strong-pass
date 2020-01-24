@@ -1,10 +1,9 @@
 package com.adxl.strongpass;
 
-import jdk.nashorn.internal.runtime.JSONFunctions;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Random;
 
@@ -16,7 +15,7 @@ public class SpController
     Random r=new Random();
 
     @PostMapping("/generate")
-    public ResponseEntity<String> generatePassword(@RequestBody Request request)
+    public ResponseEntity<Map<String,String>> generatePassword(@RequestBody Request request)
     {
         System.out.println(request);
 
@@ -32,7 +31,7 @@ public class SpController
         else
             result= generateAlphaNumStringWithSymbols(length);
 
-        return ResponseEntity.ok().body("{\"result\":\""+result+"\"}");
+        return ResponseEntity.ok().body(Collections.singletonMap("result",result));
     }
 
     private String generateAlphaString(int length)
