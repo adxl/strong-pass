@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Password Generator</title>
 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="style.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
   <script src="app.js"></script>
@@ -45,7 +46,15 @@
           </button><br>
         </div>
 
-        <input type="text" id="result" ng-model="result" ng-click="sp.copy()" readonly />
+
+        <div id="resultContainer">
+          <div id="resultDiv">
+            <input type="text" id="result" ng-model="result" ng-click="sp.copy()" readonly />
+          </div>
+          <div id="resultButton">
+            <button  id="copyButton"><i class="far fa-clipboard"></i></button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
