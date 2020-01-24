@@ -24,5 +24,13 @@ angular.module("strong-pass", []).controller("spController", [
                 console.log(response)
             })
         }
+        this.copy = function () {
+            var text = document.getElementById('result');
+            if (text.value != "Copied!") {
+                text.select();
+                document.execCommand("copy");
+                $scope.result = "Copied!";
+            }
+        }
     }
 ]);

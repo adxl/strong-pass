@@ -52,7 +52,7 @@ td:last-child input
 }
 
 #result {
-    cursor:not-allowed;
+    cursor:copy;
     text-align: center;
     font-size: xx-large;
   }
